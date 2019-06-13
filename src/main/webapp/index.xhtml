@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:o="http://omnifaces.org/ui">
+<f:view>
+    <h:outputLabel value="Hello, world Omnifaces counter!"/>
+    <h:form>
+        <h1><h:panelGroup id="count">#{pushBean.count}</h:panelGroup></h1>
+        <h:commandButton id="increment" value="increment!" action="#{pushBean.increment}">
+            <f:ajax />
+        </h:commandButton>
+    </h:form>
+</f:view>
+<script type="javascript">
+    function updateCounter(newvalue) {
+        $("#count").text(newvalue);
+    }
+
+    function onclosePush(code) {
+        if (code == -1) {
+            alert("Oops! Your browser doesn't seem to support web sockets. The push functionality won't work.")
+        } else if (code != 1000) {
+            alert("Oops! Push has stopped working with error code " + code + "! Reload the page.")
+        }
+    }
+</script>
+<o:socket channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}"/>
+</html>

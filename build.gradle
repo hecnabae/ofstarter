@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.hecnabae'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+    compile.extendsFrom provided
+}
+
+dependencies {
+    compile 'org.primefaces:primefaces:6.2'
+
+    // JSF 2.2
+    provided group: 'com.sun.faces', name: 'jsf-api', version: '2.2.13'
+    provided group: 'com.sun.faces', name: 'jsf-impl', version: '2.2.13'
+
+    // Javaee-web-api
+    compile 'javax:javaee-web-api:7.0'
+    // cdi-api
+    compile 'javax.enterprise:cdi-api:2.0'
+    // weld-servlet
+    compile 'org.jboss.weld.servlet:weld-servlet-shaded:3.0.5.Final'
+    // Omnifaces
+    compile 'org.omnifaces:omnifaces:2.7.1'
+}
