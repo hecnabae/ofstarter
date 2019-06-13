@@ -2,6 +2,7 @@
 Tomcat OmniFaces Starter project
 
 ## Technology Stack
+- Gradle 4.10.3
 - JSF 2.2
 - OmniFaces 2.7.1
 - Primefaces 6.2
