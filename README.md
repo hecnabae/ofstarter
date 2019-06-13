@@ -1,5 +1,5 @@
 # OmniFaces Starter
-OmniFaces Starter project
+Tomcat OmniFaces Starter project
 
 ## Technology Stack
 - JSF 2.2
